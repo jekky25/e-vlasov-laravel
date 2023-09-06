@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+function pr (...$ar)
+{
+	global $USER;
+	if (!$USER->isAdmin()) return false;
+	foreach ($ar as $_ar)
+	{
+		echo '<pre>'; print_r ($_ar); echo '</pre>';
+	}
+}
