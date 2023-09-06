@@ -9,25 +9,25 @@
 	<meta name="yandex-verification" content="ddd70da113dd26d6" />
 	<meta name="description" content="Услуги Битрикс программиста. Оставьте заявку на разработку сайта на Битрикс.">
 	<meta property="og:description" content="Услуги Битрикс программиста. Оставьте заявку на разработку сайта на Битрикс." />
-	<link rel="stylesheet" href="css/bootstrap.min.css" >
-	<link rel="stylesheet" href="css/bootstrap-select.min.css">
-	<link rel="stylesheet" href="css/style.css" >
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<link href="css/jquery-ui.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="js/highslide/highslide.css" type="text/css" />
-	<link rel="stylesheet"  href="js/lightGallery.css"/>
-	<link rel="shortcut icon" href="http://www.e-vlasov.ru/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="http://www.e-vlasov.ru/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="{{ asset("css/bootstrap.min.css") }}" >
+	<link rel="stylesheet" href="{{ asset("css/bootstrap-select.min.css") }}">
+	<link rel="stylesheet" href="{{ asset("css/style.css") }}" >
+	<link rel="stylesheet" href="{{ asset("css/owl.carousel.min.css") }}">
+	<link rel="stylesheet" href="{{ asset("css/owl.theme.default.min.css") }}">
+	<link rel="stylesheet" href="{{ asset("css/jquery-ui.min.css") }}">
+	<link rel="stylesheet" href="{{ asset("js/highslide/highslide.css") }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset("js/lightGallery.css") }}"/>
+	<link rel="shortcut icon" href="{{ asset("favicon.ico") }}" type="image/x-icon">
+	<link rel="icon" href="{{ asset("favicon.ico") }}" type="image/x-icon">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/bootstrap-select.min.js"></script>
-	<script src="js/common.js"></script>
-	<script src="js/owl.carousel2.js"></script>
-	<script src="js/owl.navigation.js"></script>
-	<script src="js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/highslide/highslide.js"></script>
-	<script src="js/lightGallery.min.js"></script>
+	<script src="{{ asset("js/bootstrap.min.js") }}"></script>
+	<script src="{{ asset("js/bootstrap-select.min.js") }}"></script>
+	<script src="{{ asset("js/common.js") }}"></script>
+	<script src="{{ asset("js/owl.carousel2.js") }}"></script>
+	<script src="{{ asset("js/owl.navigation.js") }}"></script>
+	<script src="{{ asset("js/jquery-ui.min.js") }}"></script>
+	<script type="text/javascript" src="{{ asset("js/highslide/highslide.js") }}"></script>
+	<script src="{{ asset("js/lightGallery.min.js") }}"></script>
 <script>
 	$(document).ready(function() {
 			$("#lightGallery").lightGallery();
