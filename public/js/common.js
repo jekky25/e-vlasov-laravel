@@ -77,10 +77,12 @@ $(document).ready(function () {
                $('.error-text').fadeIn();
                return false;
           } else {
-             	var data = new Object();
-               data.name = $('#name').val();
-               data.email = $('#e-mail').val ();
-               data.message = $('#message').val();
+             	var data       = new Object();
+               data.name      = $('#name').val();
+               data.email     = $('#e-mail').val ();
+               data.message   = $('#message').val();
+               data._token    = $('[name="_token"]').val();
+               
               $.ajax({
                     type: "POST",
                     url: 'ajax/send_mess.php',

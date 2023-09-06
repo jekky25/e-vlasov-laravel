@@ -91,7 +91,8 @@
 	<div class="block-over4-over">
 		<h2>Заполните форму</h2>
 		<div class="block-form">
-			<form method="post" action="/" name="order-form">
+			<form method="post" action="{{route('home')}}" name="order-form">
+				{{ csrf_field() }}
 				<div class="error-text"></div>
 				<div class="form-group">
 					<input name="name" id="name" class="form-control" type="text" placeholder="Представьтесь" />

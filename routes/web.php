@@ -16,6 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 
 
+/*ajax */
+Route::post('ajax/send_mess.php', 'ajaxController@sendMess');
+
+
+
+
+
+
+
+
+
 function pr (...$ar)
 {
 	global $USER;
