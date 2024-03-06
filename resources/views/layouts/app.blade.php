@@ -27,6 +27,7 @@
 	<script src="{{ asset("js/owl.navigation.js") }}"></script>
 	<script src="{{ asset("js/jquery-ui.min.js") }}"></script>
 	<script type="text/javascript" src="{{ asset("js/highslide/highslide.js") }}"></script>
+	<script src="https://unpkg.com/vue@2.1.3/dist/vue.js"></script>
 	<script src="{{ asset("js/lightGallery.min.js") }}"></script>
 <script>
 	$(document).ready(function() {
@@ -35,15 +36,10 @@
 </script>
 </head>
 <body>
-		<header>
+		<header class="v-mod">
 			<section class="head-menu">
 				<ul class="head-menu-list">
-					<li><a href="#about">Обо мне</a></li>
-					<li><a href="#service">Услуги</a></li>
-					<li><a href="#price">Стоимость</a></li>
-					<li><a href="#contact">Контакты</a></li>
-					<li class="mail"><a href="mailto:jekky25@list.ru">jekky25@list.ru</a></li>
-					<li class="skype"><a href="skype:jekky25?call">jekky25</a></li>
+					<li v-for="name in names" :class="name.class"><a :href="name.href">@{{name.n}}</a></li>
 				</ul>
 				<div class="logo">Программист 1С - Битрикс</div>
 				<div class="but-order-over"><div class="but-order">Оставить заявку</div></div>
@@ -51,12 +47,7 @@
 				<div class="mobile-menu-main-item">
 					<div class="close-menu"></div>
 					<ul class="head-menu-list-mob">
-						<li><a href="#about">Обо мне</a></li>
-						<li><a href="#service">Услуги</a></li>
-						<li><a href="#price">Стоимость</a></li>
-						<li><a href="#contact">Контакты</a></li>
-						<li class="mail"><a href="mailto:jekky25@list.ru">jekky25@list.ru</a></li>
-						<li class="skype"><a href="skype:jekky25?call">jekky25</a></li>
+						<li v-for="name in names" :class="name.class"><a :href="name.href">@{{name.n}}</a></li>
 					</ul>
 				</div>
 
@@ -64,18 +55,35 @@
 		</header>
 		@yield('main_body')
 		<footer>
-		<section class="foot-menu">
+		<section class="foot-menu v-mod-foot">
 			<ul class="foot-menu-list">
-				<li><a href="#about">Обо мне</a></li>
-				<li><a href="#service">Услуги</a></li>
-				<li><a href="#price">Стоимость</a></li>
-				<li><a href="#contact">Контакты</a></li>
-				<li class="mail"><a href="mailto:jekky25@list.ru">jekky25@list.ru</a></li>
-				<li class="skype"><a href="skype:jekky25?call">jekky25</a></li>
+				<li v-for="name in names" :class="name.class"><a :href="name.href">@{{name.n}}</a></li>
 			</ul>
 			<div class="logo-foot">Евгений Власов. Битрикс Разработка (с) 2018</div>
 		</section>
 	</footer>
+	<script>
+		var menu = [
+					{n:'Обо мне', href:'#about'}, 
+					{n:'Услуги', href:'#service'}, 
+					{n:'Стоимость', href:'#price'}, 
+					{n:'Контакты', href:'#contact'}, 
+					{n:'jekky25@list.ru', href:'mailto:jekky25@list.ru', class:'mail'}, 
+					{n:'jekky25', href:'skype:jekky25?call', class:'skype'}
+		];
+		app = new Vue({
+			el: '.v-mod',
+			data:	{
+				names : menu
+			}
+		});
+		app = new Vue({
+			el: '.v-mod-foot',
+			data:	{
+				names : menu
+			}
+		});
+	</script>
 	<!-- Yandex.Metrika counter --> <script type="text/javascript" > (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter50183023 = new Ya.Metrika2({ id:50183023, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/tag.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks2"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/50183023" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 </body>
 </html>
