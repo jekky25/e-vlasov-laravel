@@ -29,6 +29,12 @@ class AjaxController extends Controller
         // $this->middleware('auth');
     }
 
+	 /**
+     * Send message from the feedback form
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return string JSON
+     */
 	public function sendMess (Request $request)
 	{
 		$req = $request->post();
