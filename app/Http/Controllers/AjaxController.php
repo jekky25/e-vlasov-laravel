@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-//use App\Models;
 use App\User;
+use Validator;
 
 
 
@@ -18,6 +18,18 @@ class AjaxController extends Controller
 	public $adminEmail			= 'jekky25@list.ru';
 	public $supportEmail		= 'support@e-vlasov.ru';
 	
+	public static $rulesFeedBack = [
+		'name'		=> ['required'],
+		'e-mail'	=> ['required', 'email'],
+		'message'	=> ['required']
+	];
+
+	public static $errMessagesFeedBack = [
+		'name.required'			=> 'не указано имя',
+		'e-mail.email'			=> 'указан некорректный Е-майл',
+		'e-mail.required'		=> 'не указан Е-майл',
+		'message.required'		=> 'не введено сообщение'
+	];
 
     /**
      * Create a new controller instance.
@@ -37,7 +49,18 @@ class AjaxController extends Controller
      */
 	public function sendMess (Request $request)
 	{
-		$req = $request->post();
+		$req 			= $request->post();
+		$validator 		= Validator::make($req, self::$rulesFeedBack, self::$errMessagesFeedBack);
+
+		if ($validator->fails()) {
+			$messages = $validator->messages();
+			$strError = $messages;
+			
+			return redirect()->back()
+			->withErrors($strError, 'comment')
+			->withInput();
+		}
+
 		if (empty ($req['name']) || empty ($req['email']) || empty ($req['message'])) return false;
 
 		$to 		= $this->adminEmail;
