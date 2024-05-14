@@ -46,7 +46,6 @@
 					<div class="close-menu"></div>
 					<menu-block class="head-menu-list"></menu-block>
 				</div>
-
 			</section>
 		</header>
 		@yield('main_body')

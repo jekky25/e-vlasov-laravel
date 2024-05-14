@@ -50,6 +50,7 @@
 					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm7.jpg"><span><img src="images/sert_sm7.jpg" alt="Технология Композитный сайт" title="Технология Композитный сайт" /></span></div>
 					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm8.jpg"><span><img src="images/sert_sm8.jpg" alt="Многосайтовость" title="Многосайтовость" /></span></div>
 					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm9.jpg"><span><img src="images/sert_sm9.jpg" alt="Продвижение сайта и Маркетинг" title="Продвижение сайта и Маркетинг" /></span></div>
+					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm10.jpg"><span><img src="images/sert_sm10.jpg" alt="Бизнес процессы" title="Бизнес процессы" /></span></div>
 				</div>
 			</div>
 		</div>
