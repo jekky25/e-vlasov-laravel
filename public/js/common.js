@@ -106,95 +106,29 @@ $(document).ready(function () {
           $('.error-text').fadeOut();
      });
 
+	/**
+	 * Do scrolling to the choose blocks
+	 * @param {String} $target
+	 * @returns {Boolean}
+	 */
+	scroll = function ($target)
+	{
+		$('.mobile-menu-main-item').fadeOut();
+		destination = $($target).offset().top;
+		destinationPosition = destination - minus_off2;
+		$("html").animate({scrollTop: destinationPosition}, 1000);
+		return false;
+	};
 
-     $('.head-menu-list a[href=#about]').click(function(e){
-          destination = $('.block-over2').offset().top;
-          dest_pos = destination - minus_off2;
-          $("html").animate({scrollTop: dest_pos}, 1000);
-          return false;
-     });
-     
-     $('.foot-menu-list a[href=#about]').click(function(e){
-          destination = $('.block-over2').offset().top;
-          dest_pos = destination - minus_off2;
-          $("html").animate({scrollTop: dest_pos}, 1000);
-          return false;
-     });
-     
-     $('.head-menu-list-mob a[href=#about]').click(function(e){
-          $('.mobile-menu-main-item').fadeOut();
-          destination = $('.block-over2').offset().top;
-          dest_pos = destination - minus_off2;
-          $("html").animate({scrollTop: dest_pos}, 1000);
-          return false;
-     });
-
-     $('.head-menu-list a[href=#service]').click(function(e){
-          destination = $('.block-over3').offset().top;
-          dest_pos = destination - minus_off2;
-          $("html").animate({scrollTop: dest_pos}, 1000);
-          return false;
-     });
-     
-     $('.foot-menu-list a[href=#service]').click(function(e){
-          destination = $('.block-over3').offset().top;
-          dest_pos = destination - minus_off2;
-          $("html").animate({scrollTop: dest_pos}, 1000);
-          return false;
-     });
-     
-     $('.head-menu-list-mob a[href=#service]').click(function(e){
-          $('.mobile-menu-main-item').fadeOut();
-          destination = $('.block-over3').offset().top;
-          dest_pos = destination - minus_off2;
-          $("html").animate({scrollTop: dest_pos}, 1000);
-          return false;
-     });
-
-     $('.head-menu-list a[href=#price]').click(function(e){
-          destination = $('.block-over5').offset().top;
-          dest_pos = destination - minus_off2;
-          $("html").animate({scrollTop: dest_pos}, 1000);
-          return false;
-     });
-
-     $('.foot-menu-list a[href=#price]').click(function(e){
-          destination = $('.block-over5').offset().top;
-          dest_pos = destination - minus_off2;
-          $("html").animate({scrollTop: dest_pos}, 1000);
-          return false;
-     });
-
-     $('.head-menu-list-mob a[href=#price]').click(function(e){
-          $('.mobile-menu-main-item').fadeOut();
-          destination = $('.block-over5').offset().top;
-          dest_pos = destination - minus_off2;
-          $("html").animate({scrollTop: dest_pos}, 1000);
-          return false;
-     });
-     
-     $('.head-menu-list a[href=#contact]').click(function(e){
-          destination = $('.block-over6').offset().top;
-          dest_pos = destination - minus_off2;
-          $("html").animate({scrollTop: dest_pos}, 1000);
-          return false;
-     });
-
-     $('.foot-menu-list a[href=#contact]').click(function(e){
-          destination = $('.block-over6').offset().top;
-          dest_pos = destination - minus_off2;
-          $("html").animate({scrollTop: dest_pos}, 1000);
-          return false;
-     });
-
-     $('.head-menu-list-mob a[href=#contact]').click(function(e){
-          $('.mobile-menu-main-item').fadeOut();
-          destination = $('.block-over6').offset().top;
-          dest_pos = destination - minus_off2;
-          $("html").animate({scrollTop: dest_pos}, 1000);
-          return false;
-     });
-     
-     
-     
+	$('.head-menu-list a[href=#about]').click(function(e){return scroll('.block-over2')});
+	$('.foot-menu-list a[href=#about]').click(function(e){return scroll('.block-over2')});
+	$('.head-menu-list-mob a[href=#about]').click(function(e){return scroll('.block-over2')});
+	$('.head-menu-list a[href=#service]').click(function(e){return scroll('.block-over3')});
+	$('.foot-menu-list a[href=#service]').click(function(e){return scroll('.block-over3')});
+	$('.head-menu-list-mob a[href=#service]').click(function(e){return scroll('.block-over3')});
+	$('.head-menu-list a[href=#price]').click(function(e){return scroll('.block-over5')});
+	$('.foot-menu-list a[href=#price]').click(function(e){return scroll('.block-over5')});
+	$('.head-menu-list-mob a[href=#price]').click(function(e){return scroll('.block-over5')});
+	$('.head-menu-list a[href=#contact]').click(function(e){return scroll('.block-over6')});
+    $('.foot-menu-list a[href=#contact]').click(function(e){return scroll('.block-over6')});
 });
