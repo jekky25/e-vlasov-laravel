@@ -11,7 +11,7 @@
 	<meta property="og:description" content="Услуги Битрикс программиста. Оставьте заявку на разработку сайта на Битрикс." />
 	<link rel="stylesheet" href="{{ asset("css/bootstrap.min.css") }}" >
 	<link rel="stylesheet" href="{{ asset("css/bootstrap-select.min.css") }}">
-	<link rel="stylesheet" href="{{ asset("css/style.css") }}" >
+	<link rel="stylesheet" href="{{ asset("css/style.css?t=5") }}" >
 	<link rel="stylesheet" href="{{ asset("css/owl.carousel.min.css") }}">
 	<link rel="stylesheet" href="{{ asset("css/owl.theme.default.min.css") }}">
 	<link rel="stylesheet" href="{{ asset("css/jquery-ui.min.css") }}">
