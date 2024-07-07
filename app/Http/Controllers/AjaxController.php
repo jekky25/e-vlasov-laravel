@@ -20,14 +20,14 @@ class AjaxController extends Controller
 	
 	public static $rulesFeedBack = [
 		'name'		=> ['required'],
-		'e-mail'	=> ['required', 'email'],
+		'email'	=> ['required', 'email'],
 		'message'	=> ['required']
 	];
 
 	public static $errMessagesFeedBack = [
 		'name.required'			=> 'не указано имя',
-		'e-mail.email'			=> 'указан некорректный Е-майл',
-		'e-mail.required'		=> 'не указан Е-майл',
+		'email.email'			=> 'указан некорректный Е-майл',
+		'email.required'		=> 'не указан Е-майл',
 		'message.required'		=> 'не введено сообщение'
 	];
 
@@ -51,11 +51,9 @@ class AjaxController extends Controller
 	{
 		$req 			= $request->post();
 		$validator 		= Validator::make($req, self::$rulesFeedBack, self::$errMessagesFeedBack);
-
 		if ($validator->fails()) {
 			$messages = $validator->messages();
 			$strError = $messages;
-			
 			return redirect()->back()
 			->withErrors($strError, 'comment')
 			->withInput();
