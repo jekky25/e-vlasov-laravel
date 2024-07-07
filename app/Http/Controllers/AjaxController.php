@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Services\Email;
 use App\User;
 use Validator;
 
@@ -59,27 +60,13 @@ class AjaxController extends Controller
 			->withInput();
 		}
 
-		if (empty ($req['name']) || empty ($req['email']) || empty ($req['message'])) return false;
-
-		$to 		= $this->adminEmail;
-		$subject 	= "Отправка с Формы обратной связи";
-		$message 	= "<p>Имя: " . $req['name'] . "</p>\r\n";
-		$message 	.= "<p>Е-майл: " . $req['email'] . "</p>\r\n";
-		$message 	.= "<p>Сообщение: " . $req['message'] . "</p>\r\n";
-
-
-		$headers 	= 'From: "Битрикс Е. Власов" <' . $this->supportEmail . '>' . "\r\n";
-		$headers 	.= 'Content-type: text/html; charset=utf-8';
-
-
-		$result 	= mail($to,"$subject ",$message, $headers); 
-		if (!empty($result))
+		if (!Email::checkEmptyFields($req)) return false;
+		if (!empty(Email::sendEmail($req, $this)))
 		{
 			$ReturnData = ['success' => 1];
 			echo json_encode($ReturnData);
 			exit();
 		} else { echo('Ошибка! Письмо не отправлено.'); }
-
 		return false;
 	}
 }
