@@ -12,6 +12,12 @@ class Email {
 	public function __construct(){
 	}
 
+	/**
+     * check empty fields
+     * 
+     * @param array $req
+     * @return bool
+     */
 	public static function checkEmptyFields($req)
 	{
 		foreach (self::$fields as $field)
@@ -21,6 +27,12 @@ class Email {
 		return true;
 	}
 
+	/**
+     * check field empty
+     * 
+     * @param $field
+     * @return bool
+     */
 	public static function isEmptyField($field)
 	{
 		return !empty ($field);
@@ -29,14 +41,12 @@ class Email {
 	 /**
      * sends emails
      * 
-     * @param string $email_template
-     * @param string $email
-     * @param string $EMAIL
-	 * @param string $subject
-     * @return void
+     * @param array $req
+     * @param object $obj
+     * @return bool
      */
-    public static function sendEmail($req, $obj)
-    {
+	public static function sendEmail($req, $obj)
+	{
 		$to 		= $obj->adminEmail;
 		$subject 	= "Отправка с Формы обратной связи";
 		$message 	= "<p>Имя: " . $req['name'] . "</p>\r\n";
@@ -46,7 +56,6 @@ class Email {
 
 		$headers 	= 'From: "Битрикс Е. Власов" <' . $obj->supportEmail . '>' . "\r\n";
 		$headers 	.= 'Content-type: text/html; charset=utf-8';
-
 		return mail($to,"$subject ",$message, $headers);
-    }
+	}
 }
