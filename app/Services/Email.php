@@ -3,59 +3,40 @@ namespace App\Services;
 
 class Email {
 
-	public static $fields = ['name', 'email', 'message'];
+	private $toEmail, $body, $headers, $subject;
+	private $encodeFirst = 'utf-8';
+	private $encodeSecond = 'windows-1251';
+
 	/**
      * Create a new Email instance.
      *
      * @return void
      */
-	public function __construct(){
+	public function __construct($subject, $body, $headers, $toEmail) {
+		$this->subject	= $this->convertEncoding($subject);
+		$this->body		= $this->convertEncoding($body);
+		$this->headers	= $this->convertEncoding($headers);
+		$this->toEmail	= $this->convertEncoding($toEmail);
 	}
 
 	/**
-     * check empty fields
-     * 
-     * @param array $req
-     * @return bool
+     * Convert Encoding
+     * @param string $str
+     * @return string
      */
-	public static function checkEmptyFields($req)
+	public function convertEncoding ($str)
 	{
-		foreach (self::$fields as $field)
-		{
-			if (!self::isEmptyField($req[$field])) return false;
-		}
-		return true;
+		return iconv($this->encodeFirst, $this->encodeSecond, $str);
 	}
+
 
 	/**
-     * check field empty
-     * 
-     * @param $field
-     * @return bool
-     */
-	public static function isEmptyField($field)
-	{
-		return !empty ($field);
-	}
-
-	 /**
      * sends emails
      * 
-     * @param array $req
-     * @param object $obj
      * @return bool
      */
-	public static function sendEmail($req, $obj)
+	public function sendEmail()
 	{
-		$to 		= $obj->adminEmail;
-		$subject 	= "Отправка с Формы обратной связи";
-		$message 	= "<p>Имя: " . $req['name'] . "</p>\r\n";
-		$message 	.= "<p>Е-майл: " . $req['email'] . "</p>\r\n";
-		$message 	.= "<p>Сообщение: " . $req['message'] . "</p>\r\n";
-
-
-		$headers 	= 'From: "Битрикс Е. Власов" <' . $obj->supportEmail . '>' . "\r\n";
-		$headers 	.= 'Content-type: text/html; charset=utf-8';
-		return mail($to,"$subject ",$message, $headers);
+		return mail($this->toEmail,$this->subject, $this->body, $this->headers);
 	}
 }

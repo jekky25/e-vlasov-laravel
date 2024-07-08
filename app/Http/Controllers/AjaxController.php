@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Services\Email;
+use App\Services\Message;
 use App\User;
 use Validator;
 
@@ -16,7 +16,7 @@ use Validator;
 class AjaxController extends Controller
 {
 
-	public $adminEmail			= 'jekky25@list.ru';
+	public $adminEmail			= 'support@avioletta.ru';
 	public $supportEmail		= 'support@e-vlasov.ru';
 	
 	public static $rulesFeedBack = [
@@ -60,8 +60,7 @@ class AjaxController extends Controller
 			->withInput();
 		}
 
-		if (!Email::checkEmptyFields($req)) return false;
-		if (!empty(Email::sendEmail($req, $this)))
+		if (!empty((new Message($req, $this))->sendFeedback()))
 		{
 			$ReturnData = ['success' => 1];
 			echo json_encode($ReturnData);
