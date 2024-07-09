@@ -63,7 +63,7 @@ class AjaxController extends Controller
 		if (!empty((new Message($req, $this))->sendFeedback()))
 		{
 			$ReturnData = ['success' => 1];
-			echo json_encode($ReturnData);
+			return response()->json($ReturnData);
 		} else { echo('Ошибка! Письмо не отправлено.'); }
 		return false;
 	}
