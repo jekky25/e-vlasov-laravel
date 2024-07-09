@@ -64,7 +64,6 @@ class AjaxController extends Controller
 		{
 			$ReturnData = ['success' => 1];
 			echo json_encode($ReturnData);
-			exit();
 		} else { echo('Ошибка! Письмо не отправлено.'); }
 		return false;
 	}
