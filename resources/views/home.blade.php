@@ -51,6 +51,8 @@
 					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm8.jpg"><span><img src="images/sert_sm8.jpg" alt="Многосайтовость" title="Многосайтовость" /></span></div>
 					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm9.jpg"><span><img src="images/sert_sm9.jpg" alt="Продвижение сайта и Маркетинг" title="Продвижение сайта и Маркетинг" /></span></div>
 					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm10.jpg"><span><img src="images/sert_sm10.jpg" alt="Бизнес процессы" title="Бизнес процессы" /></span></div>
+					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm11.jpg"><span><img src="images/sert_sm11.jpg" alt="Курс для хостеров" title="Курс для хостеров" /></span></div>
+					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm12.jpg"><span><img src="images/sert_sm12.jpg" alt="Администратор сервиса Битрикс24 (коробочная версия)" title="Администратор сервиса Битрикс24 (коробочная версия)" /></span></div>
 				</div>
 			</div>
 		</div>
