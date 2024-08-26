@@ -53,6 +53,7 @@
 					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm10.jpg"><span><img src="images/sert_sm10.jpg" alt="Бизнес процессы" title="Бизнес процессы" /></span></div>
 					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm11.jpg"><span><img src="images/sert_sm11.jpg" alt="Курс для хостеров" title="Курс для хостеров" /></span></div>
 					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm12.jpg"><span><img src="images/sert_sm12.jpg" alt="Администратор сервиса Битрикс24 (коробочная версия)" title="Администратор сервиса Битрикс24 (коробочная версия)" /></span></div>
+					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm13.jpg"><span><img src="images/sert_sm13.jpg" alt="Vue.js и Bitrix Framework" title="Vue.js и Bitrix Framework" /></span></div>
 				</div>
 			</div>
 		</div>
