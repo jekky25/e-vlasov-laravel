@@ -94,23 +94,7 @@
 </section>
 <section class="block-over4">
 	<div class="block-over4-over">
-		<h2>Заполните форму</h2>
-		<div class="block-form">
-			<form method="post" action="{{route('home')}}" name="order-form">
-				{{ csrf_field() }}
-				<div class="error-text"></div>
-				<div class="form-group">
-					<input name="name" id="name" class="form-control" type="text" placeholder="Представьтесь" />
-				</div>
-				<div class="form-group">
-					<input name="e-mail" id="e-mail" class="form-control" type="text" placeholder="Ваш E-mail" />
-				</div>
-				<div class="form-group">
-					<textarea name="message" id="message" class="form-control" placeholder="Ваше сообщение"></textarea>
-				</div>
-				<div class="but-order-form"><div class="but-order">Оставить заявку</div></div>
-			</form>
-		</div>
+		<form-feed-back csrf_field="{{csrf_token()}}" route="{{route('home')}}"></form-feed-back>
 	</div>
 </section>
 <section class="block-over5">

@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="{{ asset("css/app.css") }}" >
 	<link rel="stylesheet" href="{{ asset("css/bootstrap.min.css") }}" >
 	<link rel="stylesheet" href="{{ asset("css/bootstrap-select.min.css") }}">
-	<link rel="stylesheet" href="{{ asset("css/style.css?t=5") }}" >
+	<link rel="stylesheet" href="{{ asset("css/style.css?t=6") }}" >
 	<link rel="stylesheet" href="{{ asset("css/owl.carousel.min.css") }}">
 	<link rel="stylesheet" href="{{ asset("css/owl.theme.default.min.css") }}">
 	<link rel="stylesheet" href="{{ asset("css/jquery-ui.min.css") }}">

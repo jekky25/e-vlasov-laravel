@@ -52,65 +52,6 @@ $(document).ready(function () {
 		$("html").animate({scrollTop: dest_pos}, 1000);
 	});
 
-	$(".block-form .but-order").click(function(e){
-		regexpEmail = /^(?:[a-z0-9._]+(?:[-_.]?[a-z0-9._]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[a-z]{2,5})$/i;
-		var error = 0;
-		var errorText = '';
-		if ($('#name').val().length < 2) {
-			errorText += '<p>Имя не введено</p>';
-			error = 1;
-		}
-		if (!$('#e-mail').val ().match (regexpEmail)) {
-			errorText += '<p>Некорректно введен е-майл</p>';
-			error = 1;
-		}
-		if ($('#message').val().length < 2) {
-			errorText += '<p>Не введено сообщение</p>';
-			error = 1;
-		}
-
-		if (error == 10) {
-			$('.error-text').html (errorText);
-			$('.error-text').fadeIn();
-			return false;
-		} else {
-			var data       = new Object();
-			data.name      = $('#name').val();
-			data.email     = $('#e-mail').val ();
-			data.message   = $('#message').val();
-			data._token    = $('[name="_token"]').val();
-			$.ajax({
-				type: "POST",
-				url: 'ajax/send_mess.php',
-				data: data,
-				dataType : "json",
-				success: function(ReturnData){
-					if (isset(ReturnData.success))
-						$('.block-over4-over .block-form').html ('<div class="mess-success">Спасибо! Сообщение успешно отправлено!</div>');
-					},
-				error: function(Data){
-					ReturnData = Data.responseJSON;
-					if (isset(ReturnData.errors))
-					{
-						errorText = prepareError (ReturnData.errors);
-						$('.error-text').html (errorText);
-						$('.error-text').fadeIn();
-					}
-				}
-			});
-		}
-	});
-
-	$("#name").keydown(function(e){
-		$('.error-text').fadeOut();
-	});
-	$("#e-mail").keydown(function(e){
-		$('.error-text').fadeOut();
-	});
-	$("#message").keydown(function(e){
-		$('.error-text').fadeOut();
-	});
-
 	/**
 	* Do scrolling to the choose blocks
 	* @param {String} $target

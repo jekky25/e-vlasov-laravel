@@ -7,7 +7,7 @@
 import './bootstrap';
 import { createApp } from 'vue/dist/vue.esm-bundler';
 import MenuBlock from './components/MenuBlock.vue';
-import Example from './components/Example.vue';
+import FormFeedBack from './components/FormFeedBack.vue';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -17,7 +17,7 @@ import Example from './components/Example.vue';
 const app = createApp({
     components: {
         MenuBlock,
-        Example
+        FormFeedBack
     },
 });
 

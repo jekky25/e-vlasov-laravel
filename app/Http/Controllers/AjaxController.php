@@ -18,7 +18,7 @@ class AjaxController extends Controller
 	* @param  \Illuminate\Http\Request  $request
 	* @return string JSON
 	*/
-	public function sendMess (FeedBackRequest $request)
+	public function sendMess(FeedBackRequest $request)
 	{
 		$req	= $request->validated();
 		if (!empty((new Message($req, $this))->sendFeedback()))
