@@ -26,15 +26,15 @@ class ValidationFormSendTest extends TestCase
     public function test_send_no_valid_datas(): void
     {
         $response = $this->post('ajax/send_mess.php', ['name' => 'Вася'])
-        ->assertStatus(302);
+        ->assertStatus(422);
 
         $response = $this->post('ajax/send_mess.php', ['e-mail' => 'jonny@list.ru'])
-        ->assertStatus(302);
+        ->assertStatus(422);
 
         $response = $this->post('ajax/send_mess.php', ['name' => 'Вася', 'e-mail' => 'dgfhgdg', 'message' => 'текст текст текст'])
-        ->assertStatus(302);
+        ->assertStatus(422);
 
         $response = $this->post('ajax/send_mess.php', ['message' => 'текст текст текст'])
-        ->assertStatus(302);
+        ->assertStatus(422);
     }
 }
