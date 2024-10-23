@@ -38,25 +38,7 @@
 			</ul>
 			<p></p>
 		</div>
-		<div class="sertificats">
-			<div class="container">
-				<div class="row owl-serts owl-carousel gallery" id="lightGallery">
-					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm1.jpg"><span><img src="images/sert_sm1.jpg" alt="Контент менеджер" title="Контент менеджер" /></span></div>
-					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm2.jpg"><span><img src="images/sert_sm2.jpg" alt="Установка и настройка" title="Установка и настройка" /></span></div>
-					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm3.jpg"><span><img src="images/sert_sm3.jpg" alt="Администратор.Базовый" title="Администратор.Базовый" /></span></div>
-					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm4.jpg"><span><img src="images/sert_sm4.jpg" alt="Администратор.Модули" title="Администратор.Модули" /></span></div>
-					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm5.jpg"><span><img src="images/sert_sm5.jpg" alt="Администратор.Бизнес" title="Администратор.Бизнес" /></span></div>
-					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm6.jpg"><span><img src="images/sert_sm6.jpg" alt="Разработчик Bitrix Framework" title="Разработчик Bitrix Framework" /></span></div>
-					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm7.jpg"><span><img src="images/sert_sm7.jpg" alt="Технология Композитный сайт" title="Технология Композитный сайт" /></span></div>
-					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm8.jpg"><span><img src="images/sert_sm8.jpg" alt="Многосайтовость" title="Многосайтовость" /></span></div>
-					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm9.jpg"><span><img src="images/sert_sm9.jpg" alt="Продвижение сайта и Маркетинг" title="Продвижение сайта и Маркетинг" /></span></div>
-					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm10.jpg"><span><img src="images/sert_sm10.jpg" alt="Бизнес процессы" title="Бизнес процессы" /></span></div>
-					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm11.jpg"><span><img src="images/sert_sm11.jpg" alt="Курс для хостеров" title="Курс для хостеров" /></span></div>
-					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm12.jpg"><span><img src="images/sert_sm12.jpg" alt="Администратор сервиса Битрикс24 (коробочная версия)" title="Администратор сервиса Битрикс24 (коробочная версия)" /></span></div>
-					<div class="col-md-3 col-sm-3 col-xs-4" data-src="images/sert_sm13.jpg"><span><img src="images/sert_sm13.jpg" alt="Vue.js и Bitrix Framework" title="Vue.js и Bitrix Framework" /></span></div>
-				</div>
-			</div>
-		</div>
+		<sertificates></sertificates>
 		<div class="but-order-sert"><div class="but-order">Оставить заявку</div></div>
 	</div>
 </section>
