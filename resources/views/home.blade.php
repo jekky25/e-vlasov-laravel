@@ -94,7 +94,7 @@
 </section>
 <section class="block-over4">
 	<div class="block-over4-over">
-		<form-feed-back csrf_field="{{csrf_token()}}" route="{{route('home')}}"></form-feed-back>
+		<form-feed-back csrf_field="{{csrf_token()}}" route="{{route('send_mess')}}"></form-feed-back>
 	</div>
 </section>
 <section class="block-over5">

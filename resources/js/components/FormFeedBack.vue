@@ -92,7 +92,7 @@
 			sendAjax()
 			{
 				this.getData();
-				axios.post('/ajax/send_mess.php', this.data)
+				axios.post(this.$attrs.route, this.data)
 				.then(res => {
 					let success = res.data.success;
 					if (success == 1)

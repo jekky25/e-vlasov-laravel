@@ -22960,7 +22960,7 @@ __webpack_require__.r(__webpack_exports__);
     sendAjax: function sendAjax() {
       var _this = this;
       this.getData();
-      axios.post('/ajax/send_mess.php', this.data).then(function (res) {
+      axios.post(this.$attrs.route, this.data).then(function (res) {
         var success = res.data.success;
         if (success == 1) {
           _this.successText = '<div class="mess-success">Спасибо! Сообщение успешно отправлено!</div>';

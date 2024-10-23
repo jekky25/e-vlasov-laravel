@@ -17,7 +17,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 
 /*ajax */
-Route::post('ajax/send_mess.php', 'AjaxController@sendMess');
+Route::post('ajax/send_mess.php', 'AjaxController@sendMess')->name('send_mess');
 
 
 
