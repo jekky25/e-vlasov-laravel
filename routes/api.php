@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+/*ajax */
+Route::post('send_mess.php', 'AjaxController@sendMess')->name('send_mess');
