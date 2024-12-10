@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 /*ajax */
-Route::post('send_mess.php', 'AjaxController@sendMess')->name('send_mess');
+Route::post('ajax/send_mess.php', 'AjaxController@sendMess')->name('send_mess');
