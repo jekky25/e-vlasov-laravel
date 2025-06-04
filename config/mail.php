@@ -14,6 +14,7 @@ return [
     */
 
     'default' => env('MAIL_MAILER', 'smtp'),
+    'mail_mode' => env('MAIL_MAILER', 'log'),
 
     /*
     |--------------------------------------------------------------------------

@@ -54,6 +54,8 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'admin_to_email' => env('ADMIN_TO_EMAIL', 'support@e-vlasov.ru'),
+
     'asset_url' => env('ASSET_URL', null),
 
     /*
