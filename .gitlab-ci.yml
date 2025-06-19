@@ -12,3 +12,4 @@ print_text:
   script:
     - echo $SOME
     - export NEW="blablabla"
+    - echo $NEW
