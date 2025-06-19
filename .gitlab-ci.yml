@@ -11,3 +11,4 @@ print_text:
     - develop
   script:
     - echo $SOME
+    - export NEW="blablabla"
