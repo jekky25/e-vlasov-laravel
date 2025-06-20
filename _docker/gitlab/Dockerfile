@@ -16,45 +16,45 @@ RUN apt-get update && apt-get install -y \
 
 COPY ./_docker/app/php.ini /usr/local/etc/php/conf.d/php.ini
 
-#COPY app            /var/www/app
-#COPY bootstrap      /var/www/bootstrap
-#COPY config         /var/www/config
-#COPY database       /var/www/database
-#COPY public         /var/www/public
-#COPY resources      /var/www/resources
-#COPY routes         /var/www/routes
-#COPY storage        /var/www/storage
-#COPY artisan        /var/www/artisan
-#COPY package.json   /var/www/package.json
-#COPY webpack.mix.js /var/www/webpack.mix.js
+COPY app            /var/www/app
+COPY bootstrap      /var/www/bootstrap
+COPY config         /var/www/config
+COPY database       /var/www/database
+COPY public         /var/www/public
+COPY resources      /var/www/resources
+COPY routes         /var/www/routes
+COPY storage        /var/www/storage
+COPY artisan        /var/www/artisan
+COPY package.json   /var/www/package.json
+COPY webpack.mix.js /var/www/webpack.mix.js
 
-#COPY composer.*  ./
+COPY composer.*  ./
 
 # Install composer
-#ENV COMPOSER_ALLOW_SUPERUSER=1
-#RUN curl -sS https://getcomposer.org/installer | php -- \
-#    --filename=composer \
-#    --install-dir=/usr/local/bin
+ENV COMPOSER_ALLOW_SUPERUSER=1
+RUN curl -sS https://getcomposer.org/installer | php -- \
+    --filename=composer \
+    --install-dir=/usr/local/bin
 # alias
-#RUN echo "alias a='artisan'" >> /root/.bashrc
+RUN echo "alias a='artisan'" >> /root/.bashrc
 
-#RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-#RUN apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN apt-get install -y nodejs
 
-#RUN composer install \
-#      --no-interaction \
-#      --no-plugins \
-#      --no-suggest \
-#      --no-scripts \
-#      --no-autoloader \
-#      --prefer-dist
+RUN composer install \
+      --no-interaction \
+      --no-plugins \
+      --no-suggest \
+      --no-scripts \
+      --no-autoloader \
+      --prefer-dist
 
 
-#RUN composer dump-autoload  --no-scripts --optimize && \
-#    chown -R root:www-data /var/www && \
-#    chmod 755 -R /var/www && \
-#    chmod -R 775 /var/www/storage && \
-#    chmod -R 775 /var/www/bootstrap/cache
+RUN composer dump-autoload  --no-scripts --optimize && \
+    chown -R root:www-data /var/www && \
+    chmod 755 -R /var/www && \
+    chmod -R 775 /var/www/storage && \
+    chmod -R 775 /var/www/bootstrap/cache
 
 WORKDIR /var/www
 
