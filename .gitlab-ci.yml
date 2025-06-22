@@ -21,7 +21,8 @@ app_build:
 
 dev_deploy:
   stage: deploy
-  tags: cicd
+  tags: 
+    - cicd
   only:
     - develop
   script:
