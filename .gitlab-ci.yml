@@ -27,7 +27,7 @@ dev_deploy:
     - develop
   script:
     - export CONTAINER_PREFIX=e_vlasov
-    #- docker stop $(docker ps -a | grep ${CONTAINER_PREFIX}_ | awk '{print $1}') || true
+    - docker stop $(docker ps -a | grep ${CONTAINER_PREFIX}_ | awk '{print $1}') || true
     #- docker rm $(docker ps -a | grep ${CONTAINER_PREFIX}_ | awk '{print $1}') || true
     #- docker volume rm $(docker volume ls | grep ${CONTAINER_PREFIX}_ | awk '{print $2}') || true
     #- docker-compose -p $CONTAINER_PREFIX -f docker-compose.dev.yml up -d
