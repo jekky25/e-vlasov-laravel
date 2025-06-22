@@ -12,13 +12,9 @@ services:
       - app
     container_name: e_vlasov_nginx
   app:
-    build: 
-      context: .
-      dockerfile: _docker/app/Dockerfile
+    image: $REGISTRY/dev/app:$CI_COMMIT_SHA
+    environment:
+      
     volumes:
       - ./:/var/www
-    container_name: e_vlasov_app
-  #mailcatcher:
-    #image: sj26/mailcatcher
-    #ports:
-      #- "1080:1080"       
+    container_name: ${CONTAINER_PREFIX}_app
