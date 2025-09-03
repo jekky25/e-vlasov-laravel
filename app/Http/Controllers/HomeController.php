@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 
+//test
 class HomeController extends Controller
 {
 	/**
