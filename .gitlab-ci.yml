@@ -26,7 +26,7 @@ dev_deploy:
   only:
     - develop
   script:
-    - rsync -av --delete public/ /var/www/e-vlasov-laravel2/
+    - rsync -av --delete / /var/www/e-vlasov-laravel2/
     - export CONTAINER_PREFIX=e_vlasov
     - docker stop $(docker ps -a | grep ${CONTAINER_PREFIX}_ | awk '{print $1}') || true
     - docker rm $(docker ps -a | grep ${CONTAINER_PREFIX}_ | awk '{print $1}') || true
