@@ -50,16 +50,16 @@ composer_install:
     - build
   only:
     - develop
-
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - ./
   script:
-    - echo "Running composer install…"
+    - echo "Running composer install..."
     - composer install --no-interaction --prefer-dist --optimize-autoloader
-
   artifacts:
-    expire_in: 1 week
     paths:
       - vendor/
-
 
 ############################################
 # JOB 3 — DEPLOY
