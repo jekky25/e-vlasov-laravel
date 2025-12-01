@@ -31,10 +31,8 @@ app_build:
   extends: .docker_login
 
   script:
-    - echo "Building Docker image for app…"
-    - docker build --build-arg NODE_ENV="dev" \
-        -t "$REGISTRY/dev/app:$CI_COMMIT_SHA" \
-        -f ./_docker/gitlab/app/Dockerfile .
+   - echo "Building Docker image..."
+    - docker build --build-arg NODE_ENV=dev -t "$REGISTRY/dev/app:$CI_COMMIT_SHA" -f _docker/gitlab/app/Dockerfile .
     - docker push "$REGISTRY/dev/app:$CI_COMMIT_SHA"
 
   artifacts:
