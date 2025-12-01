@@ -6,11 +6,13 @@ variables:
   REGISTRY: "registry.gitlab.com/jekky25-group/e-vlasov-laravel"
 
 before_script:
-  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  - sed -i 's|http://public-mirrors.beget.ru/apt/||g' /etc/apt/sources.list
+  - sed -i 's|ru.archive.ubuntu.com|archive.ubuntu.com|g' /etc/apt/sources.list  
   # Устанавливаем Composer
   - apt-get update -yqq
   - apt-get install -yqq git zip unzip libzip-dev
   - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
 
 app_build:
   image: composer:2
