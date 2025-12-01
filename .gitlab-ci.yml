@@ -5,87 +5,45 @@ stages:
 variables:
   REGISTRY: "registry.gitlab.com/jekky25-group/e-vlasov-laravel"
 
-# Логинимся в GitLab Registry — ЭТО нужно только там, где есть docker build/push!
-.docker_login:
-  before_script:
-    - echo "Login to GitLab Registry"
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+before_script:
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  # Устанавливаем Composer
+  - apt-get update -yqq
+  - apt-get install -yqq git zip unzip libzip-dev
+  - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-############################################
-# JOB 1 — СБОРКА DOCKER-ОБРАЗА
-############################################
 app_build:
-  image: docker:27
-  services:
-    - docker:27-dind
-  stage: build
-  tags:
-    - build
-  only:
-    - develop
-
-  variables:
-    DOCKER_HOST: tcp://docker:2376
-    DOCKER_TLS_CERTDIR: ""
-
-  extends: .docker_login
-
-  script:
-   - echo "Building Docker image..."
-    - docker build --build-arg NODE_ENV=dev -t "$REGISTRY/dev/app:$CI_COMMIT_SHA" -f _docker/gitlab/app/Dockerfile .
-    - docker push "$REGISTRY/dev/app:$CI_COMMIT_SHA"
-
-  artifacts:
-    expire_in: 1 week
-    paths:
-      - vendor/
-
-############################################
-# JOB 2 — COMPOSER INSTALL (ОТДЕЛЬНО!)
-############################################
-composer_install:
   image: composer:2
   stage: build
   tags:
     - build
   only:
     - develop
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - ./
   script:
-    - echo "Running composer install..."
+    - echo $REGISTRY
+    - docker build --build-arg NODE_ENV="dev" -t "$REGISTRY/dev/app:$CI_COMMIT_SHA" -f ./_docker/gitlab/app/Dockerfile .
+    - docker push "$REGISTRY/dev/app:$CI_COMMIT_SHA"
     - composer install --no-interaction --prefer-dist --optimize-autoloader
   artifacts:
     paths:
       - vendor/
 
-############################################
-# JOB 3 — DEPLOY
-############################################
 dev_deploy:
   stage: deploy
   tags: 
     - cicd
   only:
     - develop
-
   script:
     - rsync -av --delete ./ /var/www/e-vlasov-laravel2/
-
     - export CONTAINER_PREFIX=e_vlasov
-
     - docker stop $(docker ps -a | grep ${CONTAINER_PREFIX}_ | awk '{print $1}') || true
-    - docker rm   $(docker ps -a | grep ${CONTAINER_PREFIX}_ | awk '{print $1}') || true
+    - docker rm $(docker ps -a | grep ${CONTAINER_PREFIX}_ | awk '{print $1}') || true
     - docker volume rm $(docker volume ls | grep ${CONTAINER_PREFIX}_ | awk '{print $2}') || true
-
     - docker-compose -p $CONTAINER_PREFIX -f docker-compose.prod.yml up -d
-
     - docker exec ${CONTAINER_PREFIX}_app composer update
     - docker exec ${CONTAINER_PREFIX}_app composer install
-
-    # artisan
+    #- docker exec ${CONTAINER_PREFIX}_app php artisan migrate
     - docker exec ${CONTAINER_PREFIX}_app php artisan cache:clear
     - docker exec ${CONTAINER_PREFIX}_app php artisan config:cache
     - docker exec ${CONTAINER_PREFIX}_app php artisan route:cache
