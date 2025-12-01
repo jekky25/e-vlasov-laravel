@@ -18,6 +18,10 @@ app_build:
     - echo $REGISTRY
     - docker build --build-arg NODE_ENV="dev" -t "$REGISTRY/dev/app:$CI_COMMIT_SHA" -f ./_docker/gitlab/app/Dockerfile .
     - docker push "$REGISTRY/dev/app:$CI_COMMIT_SHA"
+    - composer install --no-interaction --prefer-dist --optimize-autoloader
+  artifacts:
+    paths:
+      - vendor/
 
 dev_deploy:
   stage: deploy
