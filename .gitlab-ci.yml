@@ -2,17 +2,32 @@ stages:
   - build
   - deploy
 
+#variables:
+#  REGISTRY: "registry.gitlab.com/jekky25-group/e-vlasov-laravel"
 variables:
-  REGISTRY: "registry.gitlab.com/jekky25-group/e-vlasov-laravel"
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_CERTDIR: ""  
 
 before_script:
-  - sed -i 's|http://public-mirrors.beget.ru/apt/||g' /etc/apt/sources.list
-  - sed -i 's|ru.archive.ubuntu.com|archive.ubuntu.com|g' /etc/apt/sources.list  
-  # Устанавливаем Composer
-  - apt-get update -yqq
-  - apt-get install -yqq git zip unzip libzip-dev
-  - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - echo "Login to GitLab Registry"
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    # Подменяем источники на официальные
+    - echo "deb http://archive.ubuntu.com/ubuntu jammy main restricted universe multiverse" > /etc/apt/sources.list
+    - echo "deb http://archive.ubuntu.com/ubuntu jammy-updates main restricted universe multiverse" >> /etc/apt/sources.list
+    - echo "deb http://archive.ubuntu.com/ubuntu jammy-security main restricted universe multiverse" >> /etc/apt/sources.list
+    - apt-get update -yqq
+    - apt-get install -yqq git zip unzip libzip-dev
+    - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+
+#before_script:
+#  - sed -i 's|http://public-mirrors.beget.ru/apt/||g' /etc/apt/sources.list
+#  - sed -i 's|ru.archive.ubuntu.com|archive.ubuntu.com|g' /etc/apt/sources.list  
+#  # Устанавливаем Composer
+#  - apt-get update -yqq
+#  - apt-get install -yqq git zip unzip libzip-dev
+#  - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+#  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
 
 app_build:
   image: composer:2
