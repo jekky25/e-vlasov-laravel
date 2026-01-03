@@ -1,0 +1,66 @@
+stages:
+  - build
+  - deploy
+
+#variables:
+#  REGISTRY: "registry.gitlab.com/jekky25-group/e-vlasov-laravel"
+variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_CERTDIR: ""  
+
+before_script:
+    - echo "Login to GitLab Registry"
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    # Подменяем источники на официальные
+    - echo "deb http://archive.ubuntu.com/ubuntu jammy main restricted universe multiverse" > /etc/apt/sources.list
+    - echo "deb http://archive.ubuntu.com/ubuntu jammy-updates main restricted universe multiverse" >> /etc/apt/sources.list
+    - echo "deb http://archive.ubuntu.com/ubuntu jammy-security main restricted universe multiverse" >> /etc/apt/sources.list
+    - apt-get update -yqq
+    - apt-get install -yqq git zip unzip libzip-dev
+    #- curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+
+#before_script:
+#  - sed -i 's|http://public-mirrors.beget.ru/apt/||g' /etc/apt/sources.list
+#  - sed -i 's|ru.archive.ubuntu.com|archive.ubuntu.com|g' /etc/apt/sources.list  
+#  # Устанавливаем Composer
+#  - apt-get update -yqq
+#  - apt-get install -yqq git zip unzip libzip-dev
+#  - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+#  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+
+app_build:
+  image: composer:2
+  stage: build
+  tags:
+    - build
+  only:
+    - develop
+  script:
+    - echo $REGISTRY
+    - docker build --build-arg NODE_ENV="dev" -t "$REGISTRY/dev/app:$CI_COMMIT_SHA" -f ./_docker/gitlab/app/Dockerfile .
+    - docker push "$REGISTRY/dev/app:$CI_COMMIT_SHA"
+    - composer install --no-interaction --prefer-dist --optimize-autoloader
+  artifacts:
+    paths:
+      - vendor/
+
+dev_deploy:
+  stage: deploy
+  tags: 
+    - cicd
+  only:
+    - develop
+  script:
+    - rsync -av --delete ./ /var/www/e-vlasov-laravel2/
+    - export CONTAINER_PREFIX=e_vlasov
+    - docker stop $(docker ps -a | grep ${CONTAINER_PREFIX}_ | awk '{print $1}') || true
+    - docker rm $(docker ps -a | grep ${CONTAINER_PREFIX}_ | awk '{print $1}') || true
+    - docker volume rm $(docker volume ls | grep ${CONTAINER_PREFIX}_ | awk '{print $2}') || true
+    - docker-compose -p $CONTAINER_PREFIX -f docker-compose.prod.yml up -d
+    - docker exec ${CONTAINER_PREFIX}_app composer update
+    - docker exec ${CONTAINER_PREFIX}_app composer install
+    #- docker exec ${CONTAINER_PREFIX}_app php artisan migrate
+    - docker exec ${CONTAINER_PREFIX}_app php artisan cache:clear
+    - docker exec ${CONTAINER_PREFIX}_app php artisan config:cache
+    - docker exec ${CONTAINER_PREFIX}_app php artisan route:cache
