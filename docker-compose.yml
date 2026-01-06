@@ -15,4 +15,4 @@ services:
       - "8876:80"
     depends_on:
       - app
-    container_name: e_vlasov_nginx    
+    container_name: e_vlasov_nginx
