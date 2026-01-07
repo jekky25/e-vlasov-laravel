@@ -18,7 +18,7 @@ app_build:
     - develop
   script:
     - echo $REGISTRY
-    - docker build --no-cache --build-arg NODE_ENV="dev" -t "$REGISTRY/dev/app:$CI_COMMIT_SHA" -f ./_docker/gitlab/app/Dockerfile .
+    - docker build --build-arg NODE_ENV="dev" -t "$REGISTRY/dev/app:$CI_COMMIT_SHA" -f ./_docker/gitlab/app/Dockerfile .
     - docker push "$REGISTRY/dev/app:$CI_COMMIT_SHA"
 
 dev_deploy:
