@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 
-//test
 class HomeController extends Controller
 {
 	/**
@@ -15,6 +14,4 @@ class HomeController extends Controller
 	{
 		return view('home');
 	}
-
-	
 }
