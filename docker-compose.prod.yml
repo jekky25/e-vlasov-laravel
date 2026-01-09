@@ -11,7 +11,7 @@ services:
       - "8878:80"
     depends_on:
       - app
-    container_name: e_vlasov_nginx
+    container_name: ${CONTAINER_PREFIX}_nginx
   app:
     image: $REGISTRY/dev/app:$CI_COMMIT_SHA
     volumes:
