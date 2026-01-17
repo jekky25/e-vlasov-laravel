@@ -15,7 +15,7 @@ services:
   app:
     image: $REGISTRY/dev/app:$CI_COMMIT_SHA
     env_file:
-       - /var/www/e-vlasov-laravel2/.env
+       - /var/www/env/.env_e_vlasov
     volumes:
       - ./:/var/www
     container_name: ${CONTAINER_PREFIX}_app
