@@ -6,7 +6,6 @@ services:
     volumes:
       - ./:/var/www/
       - ./_docker/nginx/conf.d/:/etc/nginx/conf.d/
- #     - /var/www/e-vlasov-laravel2/.env:/var/www/.env:ro
     ports:
 #      - "80:80"
       - "8878:80"
@@ -15,23 +14,8 @@ services:
     container_name: ${CONTAINER_PREFIX}_nginx
   app:
     image: $REGISTRY/dev/app:$CI_COMMIT_SHA
-#    env_file:
-#      - .env
     env_file:
-       - /var/www/e-vlasov-laravel2/.env
-#    environment:
-#      - APP_KEY=$APP_KEY
-#      - APP_NAME=$APP_NAME
-#      - APP_ENV=$APP_ENV
-#      - APP_URL=$APP_URL
-#      - DB_CONNECTION=$DB_CONNECTION
-#      - DB_HOST=$DB_HOST
-#      - DB_PORT=$DB_PORT
-#      - DB_DATABASE=$DB_DATABASE
-#      - DB_USERNAME=$DB_USERNAME
-#      - DB_PASSWORD=$DB_PASSWORD
-#      - APP_DEBUG=$APP_DEBUG
+       - /var/www/env/.env_e_vlasov
     volumes:
       - ./:/var/www
-#      - /var/www/e-vlasov-laravel2/.env:/var/www/.env:ro
     container_name: ${CONTAINER_PREFIX}_app
