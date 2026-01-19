@@ -8,7 +8,8 @@ services:
       - ./_docker/nginx/conf.d/:/etc/nginx/conf.d/
     ports:
 #      - "80:80"
-      - "8878:80"
+#      - "8878:80"
+       - "127.0.0.1:8878:80"
     depends_on:
       - app
     container_name: ${CONTAINER_PREFIX}_nginx
