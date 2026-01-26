@@ -22,5 +22,8 @@
         "sass": "^1.56.1",
         "vue": "^3.2.37",
         "vue-loader": "^16.2.0"
+    },
+    "overrides": {
+        "cipher-base": "^1.0.5"
     }
 }
