@@ -24,6 +24,7 @@
         "vue-loader": "^16.2.0"
     },
     "overrides": {
-        "cipher-base": "^1.0.5"
+        "cipher-base": "^1.0.5",
+        "webpack-dev-server": ">=5.2.1"
     }
 }
